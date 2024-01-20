@@ -3,21 +3,21 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req, res) => {
   try {
-    const q = req.nextUrl.searchParams.get("q");
+    const imageId = req.url.split("image/")[1];
 
-    if (!q) {
+    if (!imageId) {
       return NextResponse.json(
-        { success: false, message: "Invalid query" },
+        { success: false, message: "Invalid image id." },
         { status: 400 }
       );
     }
 
     const { data } = await axios.get(
-      `${process.env.BASE_URL}?key=${process.env.API_KEY}&q=${q}`
+      `${process.env.BASE_URL}?key=${process.env.API_KEY}&id=${imageId}`
     );
 
     return NextResponse.json(
-      { success: true, imagesData: data },
+      { success: true, imageInfo: data },
       { status: 200 }
     );
   } catch (error) {
@@ -26,7 +26,7 @@ export const GET = async (req, res) => {
       {
         error,
         success: false,
-        message: "Failed to get images. Please try again later.",
+        message: "Failed to get image information. Please try again later.",
       },
       { status: 500 }
     );
