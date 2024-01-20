@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 export const GET = async (req, res) => {
   try {
     const q = req.nextUrl.searchParams.get("q");
+    let page = req.nextUrl.searchParams.get("page");
+    let per_page = req.nextUrl.searchParams.get("per_page");
 
     if (!q) {
       return NextResponse.json(
@@ -12,8 +14,13 @@ export const GET = async (req, res) => {
       );
     }
 
+    if (!page) page = 1;
+    if (!per_page) per_page = 50;
+
+    // console.log(q, page, per_page);
+
     const { data } = await axios.get(
-      `${process.env.BASE_URL}?key=${process.env.API_KEY}&q=${q}`
+      `${process.env.BASE_URL}?key=${process.env.API_KEY}&q=${q}&page=${page}&per_page=${per_page}`
     );
 
     return NextResponse.json(

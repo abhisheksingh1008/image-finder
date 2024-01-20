@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Box, Button, Input } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { FiSearch } from "react-icons/fi";
+import classes from "@/styles/SearchInput.module.css";
 
 const SearchInput = () => {
   const router = useRouter();
@@ -19,10 +20,12 @@ const SearchInput = () => {
       p={3}
       color={"white"}
       border={"2px"}
-      borderColor={"white"}
       fontWeight={"bold"}
       fontSize={{ base: "1rem", md: "2rem", lg: "2rem" }}
       borderRadius={"8px"}
+      backdropBlur={"10px"}
+      bg={"rgba(255, 255, 255, 0.3)"}
+      borderColor={"rgba(255, 255, 255, 0.5)"}
     >
       <form onSubmit={onSearch}>
         <Box
@@ -35,13 +38,16 @@ const SearchInput = () => {
             ml={{ base: 2, md: 4 }}
             size="lg"
             type="text"
+            border={"none"}
             variant="unstyled"
             placeholder="Search"
-            border={"none"}
+            className={classes.input}
             value={enteredText}
             onChange={(e) => setEnteredText(e.target.value)}
           />
-          <Button type="submit">Go</Button>
+          <Button type="submit" colorScheme="teal">
+            Go
+          </Button>
         </Box>
       </form>
     </Box>
