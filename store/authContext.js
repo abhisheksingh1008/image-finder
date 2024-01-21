@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   const supabase = createClientComponentClient();
 
   const signIn = async (email, password) => {
+    console.log(email, password);
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -35,7 +36,6 @@ const AuthProvider = ({ children }) => {
         position: "top",
       });
     } else if (data.user) {
-      //   console.log(data.user);
       setUser(data.user);
       toast({
         title: "Login successful!",
@@ -44,9 +44,8 @@ const AuthProvider = ({ children }) => {
         isClosable: true,
         position: "top",
       });
+      router.replace("/");
     }
-
-    router.replace("/");
   };
 
   const signUp = async (email, password) => {
@@ -68,7 +67,6 @@ const AuthProvider = ({ children }) => {
         position: "top",
       });
     } else if (data.user) {
-      //   console.log(data.user);
       setUser(data.user);
       toast({
         title: "Sign up successful!",
@@ -77,13 +75,13 @@ const AuthProvider = ({ children }) => {
         isClosable: true,
         position: "top",
       });
+      router.replace("/");
     }
-
-    router.replace("/");
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    const res = await supabase.auth.signOut();
+    console.log(res);
     setUser(null);
     router.refresh();
   };
