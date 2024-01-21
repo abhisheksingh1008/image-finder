@@ -1,14 +1,13 @@
 "use client";
 
 import { Box } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 import Categories from "@/components/Categories";
 import SearchResults from "@/components/SearchResults";
 
-const page = () => {
-  const query = useSearchParams().get("q");
+const page = ({ searchParams }) => {
+  const { q: query } = searchParams;
 
   return (
     <Box>
