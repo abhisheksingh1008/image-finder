@@ -71,7 +71,7 @@ const SearchResults = ({ query }) => {
           id={image.id}
           tags={image.tags}
           imageUrl={image.webformatURL}
-          ref={images.length - 1 === i ? lastImageRef : null}
+          // ref={images.length - 1 === i ? lastImageRef : null}
         />
       ))}
       {hasNextPage && <div ref={lastImageRef}></div>}

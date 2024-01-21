@@ -40,7 +40,7 @@ const ShareImage = () => {
           }}
         >
           <MdContentCopy size={"1.1rem"} />
-          <Text ml={1}>Copy URL</Text>
+          <Text ml={1}>Copy link</Text>
         </MenuItem>
       </MenuList>
     </Menu>

@@ -23,7 +23,7 @@ const SearchInput = () => {
       fontWeight={"bold"}
       fontSize={{ base: "1rem", md: "2rem", lg: "2rem" }}
       borderRadius={"8px"}
-      backdropBlur={"10px"}
+      backdropFilter={"blur(8px)"}
       bg={"rgba(255, 255, 255, 0.3)"}
       borderColor={"rgba(255, 255, 255, 0.5)"}
     >
