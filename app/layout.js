@@ -10,11 +10,6 @@ export const metadata = {
   description: "By Abhishek Singh",
 };
 
-const config = {
-  initialColorMode: "light",
-  useSystemColorMode: false,
-};
-
 const theme = extendTheme({ config });
 
 export default function RootLayout({ children }) {
@@ -22,7 +17,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ChakraProvider>
-          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <AuthProvider>{children}</AuthProvider>
         </ChakraProvider>
       </body>
