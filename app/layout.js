@@ -10,8 +10,6 @@ export const metadata = {
   description: "By Abhishek Singh",
 };
 
-const theme = extendTheme({ config });
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
